@@ -43,8 +43,8 @@ import java.io.IOException;
 /**
  * 关于我们
  * 后端接口
- * @author 
- * @email 
+ * @author
+ * @email
  * @date 2024-02-29 16:04:10
  */
 @RestController
@@ -56,7 +56,7 @@ public class AboutusController {
 
 
 
-    
+
 
 
 
@@ -70,15 +70,15 @@ public class AboutusController {
 
 		PageUtils page = aboutusService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, aboutus), params), params));
 
-        return R.ok().put("data", page);
+        return R.ok().put("data", page) ;
     }
-    
+
     /**
      * 前端列表
      */
 	@IgnoreAuth
     @RequestMapping("/list")
-    public R list(@RequestParam Map<String, Object> params,AboutusEntity aboutus, 
+    public R list(@RequestParam Map<String, Object> params,AboutusEntity aboutus,
 		HttpServletRequest request){
         EntityWrapper<AboutusEntity> ew = new EntityWrapper<AboutusEntity>();
 
@@ -94,7 +94,7 @@ public class AboutusController {
     @RequestMapping("/lists")
     public R list( AboutusEntity aboutus){
        	EntityWrapper<AboutusEntity> ew = new EntityWrapper<AboutusEntity>();
-      	ew.allEq(MPUtil.allEQMapPre( aboutus, "aboutus")); 
+      	ew.allEq(MPUtil.allEQMapPre( aboutus, "aboutus"));
         return R.ok().put("data", aboutusService.selectListView(ew));
     }
 
@@ -104,11 +104,11 @@ public class AboutusController {
     @RequestMapping("/query")
     public R query(AboutusEntity aboutus){
         EntityWrapper< AboutusEntity> ew = new EntityWrapper< AboutusEntity>();
- 		ew.allEq(MPUtil.allEQMapPre( aboutus, "aboutus")); 
+ 		ew.allEq(MPUtil.allEQMapPre( aboutus, "aboutus"));
 		AboutusView aboutusView =  aboutusService.selectView(ew);
 		return R.ok("查询关于我们成功").put("data", aboutusView);
     }
-	
+
     /**
      * 后端详情
      */
@@ -127,7 +127,7 @@ public class AboutusController {
         AboutusEntity aboutus = aboutusService.selectById(id);
         return R.ok().put("data", aboutus);
     }
-    
+
 
 
 
@@ -140,7 +140,7 @@ public class AboutusController {
         aboutusService.insert(aboutus);
         return R.ok();
     }
-    
+
     /**
      * 前端保存
      */
@@ -178,7 +178,7 @@ public class AboutusController {
 
 
 
-    
+
 
     /**
      * 删除
@@ -188,8 +188,8 @@ public class AboutusController {
         aboutusService.deleteBatchIds(Arrays.asList(ids));
         return R.ok();
     }
-    
-	
+
+
 	/**
      * 前端智能排序
      */
