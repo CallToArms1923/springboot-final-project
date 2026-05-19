@@ -157,16 +157,6 @@ public class ZhaopinxinxiEntity<T> implements Serializable {
 					
 	private Integer storeupnum;
 	
-	/**
-	 * 是否审核
-	 */
-	private String sfsh;
-	
-	/**
-	 * 审核回复
-	 */
-	private String shhf;
-	
 	
 	@JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
 	@DateTimeFormat
@@ -389,30 +379,6 @@ public class ZhaopinxinxiEntity<T> implements Serializable {
 	 */
 	public Integer getStoreupnum() {
 		return storeupnum;
-	}
-	/**
-	 * 设置：是否审核
-	 */
-	public void setSfsh(String sfsh) {
-		this.sfsh = sfsh;
-	}
-	/**
-	 * 获取：是否审核
-	 */
-	public String getSfsh() {
-		return sfsh;
-	}
-	/**
-	 * 设置：审核回复
-	 */
-	public void setShhf(String shhf) {
-		this.shhf = shhf;
-	}
-	/**
-	 * 获取：审核回复
-	 */
-	public String getShhf() {
-		return shhf;
 	}
 
 }

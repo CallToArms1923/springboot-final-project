@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div class="container" :style='{"minHeight":"100vh","alignItems":"center","background":"url(http://localhost:8080/springbootfinalproject/upload/20260427181713_222_2.jpg)","display":"flex","width":"100%","backgroundSize":"100% 100%","backgroundPosition":"center center","backgroundRepeat":"no-repeat","justifyContent":"center"}'>
+		<div class="container" :style='{"minHeight":"100vh","alignItems":"center","background":"url(http://codegen.caihongy.cn/20240217/78ab35971e614cf992ee3efbba708fd7.jpg)","display":"flex","width":"100%","backgroundSize":"100% 100%","backgroundPosition":"center center","backgroundRepeat":"no-repeat","justifyContent":"center"}'>
 			<el-form v-if="pageFlag=='register'" :style='{"border":"1px solid #ccc","padding":"20px 80px 20px 120px","boxShadow":"inset 0px 0px 56px 0px #000","margin":"60px 0","alignItems":"flex-start","textAlign":"center","display":"flex","justifyContent":"space-between","minHeight":"600px","borderRadius":"20px","flexWrap":"wrap","background":"#fff","width":"750px","height":"auto"}' ref="rgsForm" class="rgs-form" :model="rgsForm" :rules="rules">
 				<div v-if="true" :style='{"padding":"0px","margin":"0 0 10px","borderColor":"#eee","color":"#333","textAlign":"center","display":"inline-block","background":"none","borderWidth":"0px","width":"100%","lineHeight":"40px","fontSize":"22px","borderStyle":"solid","fontWeight":"500"}' class="title">智聘兼职发布平台注册</div>
 				<el-form-item :style='{"padding":"0 0px","margin":"0 20px 5px","textAlign":"left","flexWrap":"wrap","display":"flex","width":"100%","fontSize":"inherit","position":"relative","height":"auto"}' class="list-item" v-if="tableName=='xuesheng'">
@@ -385,7 +385,7 @@ export default {
 <style lang="scss" scoped>
 	.container {
 	  position: relative;
-	  background: url(http://localhost:8080/springbootfinalproject/upload/20260427181713_222_2.jpg);
+	  background: url(http://codegen.caihongy.cn/20240217/78ab35971e614cf992ee3efbba708fd7.jpg);
 
 		.el-date-editor.el-input {
 		  width: 100%;

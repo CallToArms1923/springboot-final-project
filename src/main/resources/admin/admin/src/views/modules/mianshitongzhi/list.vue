@@ -179,6 +179,13 @@
 							{{scope.row.caozuoriqi}}
 						</template>
 					</el-table-column>
+					<!-- shhf -->
+					<!-- 是 -->
+					<el-table-column :resizable='true' :sortable='true' prop="shhf" label="审核回复" show-overflow-tooltip>
+						<template slot-scope="scope">
+							<div style="white-space: nowrap;">{{scope.row.shhf}}</div>
+						</template>
+					</el-table-column>
 					<el-table-column :resizable='true' :sortable='true' v-if="isAuth('mianshitongzhi','审核')" prop="sfsh" label="回复">
 						<template slot-scope="scope">
 							<el-button  type="text" size="small" @click="shDialog(scope.row)">回复</el-button>
@@ -496,6 +503,7 @@ import luquxinxiCrossAddOrUpdate from "../luquxinxi/add-or-update";
           mobile: row.mobile,
           mianshibeizhu: row.mianshibeizhu,
           caozuoriqi: row.caozuoriqi,
+          shhf: row.shhf,
           id: row.id
         }
       }

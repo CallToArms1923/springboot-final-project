@@ -43,21 +43,20 @@ import java.io.IOException;
 /**
  * 招聘资讯分类
  * 后端接口
- * @author
- * @email
+ * @author 
+ * @email 
  * @date 2024-02-29 16:04:09
  */
 @RestController
 @RequestMapping("/newstype")
 public class NewstypeController {
     @Autowired
-
     private NewstypeService newstypeService;
 
 
 
 
-
+    
 
 
 
@@ -73,13 +72,13 @@ public class NewstypeController {
 
         return R.ok().put("data", page);
     }
-
+    
     /**
      * 前端列表
      */
 	@IgnoreAuth
     @RequestMapping("/list")
-    public R list(@RequestParam Map<String, Object> params,NewstypeEntity newstype,
+    public R list(@RequestParam Map<String, Object> params,NewstypeEntity newstype, 
 		HttpServletRequest request){
         EntityWrapper<NewstypeEntity> ew = new EntityWrapper<NewstypeEntity>();
 
@@ -95,7 +94,7 @@ public class NewstypeController {
     @RequestMapping("/lists")
     public R list( NewstypeEntity newstype){
        	EntityWrapper<NewstypeEntity> ew = new EntityWrapper<NewstypeEntity>();
-      	ew.allEq(MPUtil.allEQMapPre( newstype, "newstype"));
+      	ew.allEq(MPUtil.allEQMapPre( newstype, "newstype")); 
         return R.ok().put("data", newstypeService.selectListView(ew));
     }
 
@@ -105,11 +104,11 @@ public class NewstypeController {
     @RequestMapping("/query")
     public R query(NewstypeEntity newstype){
         EntityWrapper< NewstypeEntity> ew = new EntityWrapper< NewstypeEntity>();
- 		ew.allEq(MPUtil.allEQMapPre( newstype, "newstype"));
+ 		ew.allEq(MPUtil.allEQMapPre( newstype, "newstype")); 
 		NewstypeView newstypeView =  newstypeService.selectView(ew);
 		return R.ok("查询招聘资讯分类成功").put("data", newstypeView);
     }
-
+	
     /**
      * 后端详情
      */
@@ -128,7 +127,7 @@ public class NewstypeController {
         NewstypeEntity newstype = newstypeService.selectById(id);
         return R.ok().put("data", newstype);
     }
-
+    
 
 
 
@@ -141,7 +140,7 @@ public class NewstypeController {
         newstypeService.insert(newstype);
         return R.ok();
     }
-
+    
     /**
      * 前端保存
      */
@@ -179,7 +178,7 @@ public class NewstypeController {
 
 
 
-
+    
 
     /**
      * 删除
@@ -189,8 +188,8 @@ public class NewstypeController {
         newstypeService.deleteBatchIds(Arrays.asList(ids));
         return R.ok();
     }
-
-
+    
+	
 	/**
      * 前端智能排序
      */

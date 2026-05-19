@@ -238,6 +238,7 @@ export default {
 				mobile : false,
 				mianshibeizhu : false,
 				caozuoriqi : false,
+				shhf : false,
 			},
 			
 			
@@ -256,6 +257,7 @@ export default {
 				mobile: '',
 				mianshibeizhu: '',
 				caozuoriqi: '',
+				shhf: '',
 			},
 		
 			leixingOptions: [],
@@ -292,6 +294,8 @@ export default {
 				mianshibeizhu: [
 				],
 				caozuoriqi: [
+				],
+				shhf: [
 				],
 			}
 		};
