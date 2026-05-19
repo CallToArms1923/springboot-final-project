@@ -42,7 +42,10 @@
 						删除
 					</el-button>
 
-
+					<el-button class="btn-shenhe" v-if="isAuth('zhaopinxinxi','审核')" :disabled="dataListSelections.length?false:true" type="success" @click="shBatchDialog()">
+						<span class="icon iconfont icon-shenhe2" :style='{"margin":"0 2px","fontSize":"inherit","color":"inherit","display":"inline-block"}'></span>
+						审核
+					</el-button>
 
 					<el-button class="btn18" v-if="isAuth('zhaopinxinxi','招聘人数统计')" type="success" @click="chartDialog1()">
 						<span class="icon iconfont icon-a-fenxiang2" :style='{"margin":"0 2px","fontSize":"inherit","color":"inherit","display":"inline-block"}'></span>
@@ -266,8 +269,24 @@
 
 		<toudixinxi-cross-add-or-update v-if="toudixinxiCrossAddOrUpdateFlag" :parent="this" ref="toudixinxiCrossaddOrUpdate"></toudixinxi-cross-add-or-update>
 
-
-
+		<el-dialog :title="this.batchIds.length>1?'批量审核':'审核'" :visible.sync="sfshBatchVisiable" width="50%">
+			<el-form ref="form" :model="form" label-width="80px">
+				<el-form-item label="审核状态">
+					<el-select v-model="shBatchForm.sfsh" placeholder="审核状态">
+						<el-option label="通过" value="是"></el-option>
+						<el-option label="不通过" value="否"></el-option>
+						<el-option label="待审核" value="待审核"></el-option>
+					</el-select>
+				</el-form-item>
+				<el-form-item label="内容">
+					<el-input type="textarea" :rows="8" v-model="shBatchForm.shhf"></el-input>
+				</el-form-item>
+			</el-form>
+			<span slot="footer" class="dialog-footer">
+				<el-button @click="sfshBatchVisiable=false">取 消</el-button>
+				<el-button type="primary" @click="shBatchHandler">确 定</el-button>
+			</span>
+		</el-dialog>
 
 		<el-dialog
 		  :visible.sync="chartVisiable1"
@@ -303,6 +322,12 @@ import toudixinxiCrossAddOrUpdate from "../toudixinxi/add-or-update";
 				showFlag: true,
 				sfshVisiable: false,
 				shForm: {},
+				sfshBatchVisiable: false,
+				shBatchForm: {
+					sfsh:'',
+					shhf:''
+				},
+				batchIds:[], 
 				chartVisiable: false,
 				chartVisiable1: false,
 				chartVisiable2: false,
@@ -614,6 +639,52 @@ import toudixinxiCrossAddOrUpdate from "../toudixinxi/add-or-update";
 			}
 		})
 	},
+    //批量审核窗口
+    shBatchDialog(){
+		if(this.dataListSelections.length === 0) {
+			this.$message.warning('请先选择要审核的数据');
+			return false;
+		}
+		this.batchIds = [];
+		for(let x in this.dataListSelections){
+			if(this.dataListSelections[x].sfsh&&this.dataListSelections[x].sfsh!='待审核'){
+				this.$message.error('存在已审核数据，不能批量审核');
+				this.batchIds = [];
+				return false;
+			}
+			this.batchIds.push(this.dataListSelections[x].id);
+		}
+		this.sfshBatchVisiable = true;
+    },
+    //批量审核
+    shBatchHandler(){
+      this.$confirm(`是否${this.batchIds.length>1?'一键审核':'审核'}选中数据?`, "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning"
+      }).then(() => {
+        this.$http({
+          url: "zhaopinxinxi/shBatch?sfsh="+this.shBatchForm.sfsh+"&shhf="+this.shBatchForm.shhf,
+          method: "post",
+          data: this.batchIds
+        }).then(({ data }) => {
+          if (data && data.code === 0) {
+            this.$message({
+              message: "操作成功",
+              type: "success",
+              duration: 1500,
+              onClose: () => {
+                this.getDataList();
+                this.sfshBatchVisiable = false
+				this.batchIds = []
+              }
+            });
+          } else {
+            this.$message.error(data.msg);
+          }
+        });
+      });
+    },
     // 删除
     deleteHandler(id ) {
       var ids = id
@@ -761,7 +832,28 @@ import toudixinxiCrossAddOrUpdate from "../toudixinxi/add-or-update";
 				height: auto;
 			}
 	
-	.center-form-pv .actions .del:hover {
+		.center-form-pv .actions .del:hover {
+				transform: scale(1.09) rotate(3deg);
+			}
+
+	.center-form-pv .actions .btn-shenhe {
+				border: 1px solid #C2B098;
+				cursor: pointer;
+				padding: 16px 15px;
+				margin: 4px 4px 5px;
+				color: inherit;
+				font-size: inherit;
+				transition: all 0.3s;
+				border-radius: 3px;
+				box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+				text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+				background: #C2B098;
+				width: auto;
+				min-width: 70px;
+				height: auto;
+			}
+	
+		.center-form-pv .actions .btn-shenhe:hover {
 				transform: scale(1.09) rotate(3deg);
 			}
 	

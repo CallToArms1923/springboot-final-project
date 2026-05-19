@@ -153,6 +153,9 @@ public class ZhaopinxinxiController {
     @RequestMapping("/save")
     public R save(@RequestBody ZhaopinxinxiEntity zhaopinxinxi, HttpServletRequest request){
     	//ValidatorUtils.validateEntity(zhaopinxinxi);
+        if(zhaopinxinxi.getSfsh() == null || zhaopinxinxi.getSfsh().equals("")) {
+            zhaopinxinxi.setSfsh("待审核");
+        }
         zhaopinxinxiService.insert(zhaopinxinxi);
         return R.ok();
     }
@@ -163,6 +166,9 @@ public class ZhaopinxinxiController {
     @RequestMapping("/add")
     public R add(@RequestBody ZhaopinxinxiEntity zhaopinxinxi, HttpServletRequest request){
     	//ValidatorUtils.validateEntity(zhaopinxinxi);
+        if(zhaopinxinxi.getSfsh() == null || zhaopinxinxi.getSfsh().equals("")) {
+            zhaopinxinxi.setSfsh("待审核");
+        }
         zhaopinxinxiService.insert(zhaopinxinxi);
         return R.ok();
     }
@@ -182,10 +188,27 @@ public class ZhaopinxinxiController {
         return R.ok();
     }
 
+    /**
+     * 审核
+     */
+    @RequestMapping("/shBatch")
+    @Transactional
+    public R shBatch(@RequestBody Long[] ids, @RequestParam String sfsh, @RequestParam String shhf){
+        List<ZhaopinxinxiEntity> list = new ArrayList<ZhaopinxinxiEntity>();
+        for(Long id : ids) {
+            ZhaopinxinxiEntity zhaopinxinxi = zhaopinxinxiService.selectById(id);
+            zhaopinxinxi.setSfsh(sfsh);
+            zhaopinxinxi.setShhf(shhf);
+            list.add(zhaopinxinxi);
+        }
+        zhaopinxinxiService.updateBatchById(list);
+        return R.ok();
+    }
+
+
 
 
     
-
     /**
      * 删除
      */

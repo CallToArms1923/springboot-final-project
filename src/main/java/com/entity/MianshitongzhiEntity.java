@@ -139,12 +139,6 @@ public class MianshitongzhiEntity<T> implements Serializable {
 	@DateTimeFormat 		
 	private Date caozuoriqi;
 	
-	/**
-	 * 回复内容
-	 */
-					
-	private String shhf;
-	
 	
 	@JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
 	@DateTimeFormat
@@ -331,18 +325,6 @@ public class MianshitongzhiEntity<T> implements Serializable {
 	 */
 	public Date getCaozuoriqi() {
 		return caozuoriqi;
-	}
-	/**
-	 * 设置：回复内容
-	 */
-	public void setShhf(String shhf) {
-		this.shhf = shhf;
-	}
-	/**
-	 * 获取：回复内容
-	 */
-	public String getShhf() {
-		return shhf;
 	}
 
 }
