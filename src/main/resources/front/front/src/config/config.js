@@ -7,9 +7,13 @@ export default {
             url: '/index/zhaopinxinxi'
         },
         {
+            name: '企业评价',
+            url: '/index/qiyepingjia'
+        },
+        {
             name: '论坛交流',
             url: '/index/forum'
-        }, 
+        },
         {
             name: '招聘资讯',
             url: '/index/news'

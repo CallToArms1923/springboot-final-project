@@ -45,3 +45,53 @@ font-weight: bold;
 margin-top: 50px;
 width: 100%;
 }
+
+/* 紫色按钮：添加、查看、导出统计（覆盖 Element success 绿色） */
+.el-button.el-button--success.add,
+.el-button.el-button--success.view,
+.el-button.el-button--success.btn18,
+.el-button.el-button--success.view-comments,
+.center-form-pv .actions .el-button.add,
+.center-form-pv .actions .el-button.btn18,
+.el-table .el-button.view,
+.el-table .el-button.add,
+.tables .el-button.view,
+.tables .el-button.add,
+.main-content .el-table .el-button.view,
+.main-content .tables .el-button.view {
+  border-color: #B9AFCB !important;
+  background: linear-gradient(to bottom, #C9B9DB 0%, #B9AFCB 100%) !important;
+  color: #fff !important;
+}
+
+.el-button.el-button--success.add:hover,
+.el-button.el-button--success.add:focus,
+.el-button.el-button--success.view:hover,
+.el-button.el-button--success.view:focus,
+.el-button.el-button--success.btn18:hover,
+.el-button.el-button--success.btn18:focus,
+.el-button.el-button--success.view-comments:hover,
+.center-form-pv .actions .el-button.add:hover,
+.center-form-pv .actions .el-button.btn18:hover,
+.el-table .el-button.view:hover,
+.tables .el-button.view:hover,
+.main-content .el-table .el-button.view:hover {
+  border-color: #B9AFCB !important;
+  background: linear-gradient(to bottom, #C9B9DB 0%, #B9AFCB 100%) !important;
+  color: #fff !important;
+}
+
+/* 分页激活页码数字可见 */
+.el-pagination.is-background .el-pager li.number.active {
+  background-color: rgb(72, 121, 141) !important;
+  color: #fff !important;
+  font-size: 13px !important;
+  line-height: 28px !important;
+  min-width: 30px !important;
+}
+
+.el-pagination.is-background .el-pager li.number {
+  color: #606266;
+  font-size: 13px;
+  line-height: 28px;
+}

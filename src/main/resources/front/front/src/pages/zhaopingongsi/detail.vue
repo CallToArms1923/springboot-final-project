@@ -1,4 +1,4 @@
-﻿<template>
+<template>
 <div>
 	<div :style='{"padding":"20px","margin":"0px auto","borderColor":"#d3d3d3","borderRadius":"0px","background":"#fff","borderWidth":"0 1px","width":"980px","borderStyle":"solid"}' class="breadcrumb-preview">
 		<el-breadcrumb :separator="'='" :style='{"fontSize":"14px","lineHeight":"1","justifyContent":"flex-start","display":"flex"}'>
@@ -55,6 +55,7 @@
 					<el-button :style='{"border":"1px solid #f5340030","cursor":"pointer","padding":"0 10px","margin":"0 5px 0 0","outline":"none","color":"#f53400","borderRadius":"0px","background":"none","width":"auto","lineHeight":"34px","fontSize":"14px","height":"34px"}' v-if="btnAuth('zhaopingongsi','删除')" @click="delClick">删除</el-button>
 					<!-- hasChat 无 -->
 					<el-button :style='{"border":"1px solid #f5340030","cursor":"pointer","padding":"0 10px","margin":"0 5px 0 0","outline":"none","color":"#f53400","borderRadius":"0px","background":"none","width":"auto","lineHeight":"34px","fontSize":"14px","height":"34px"}' v-if="btnAuth('zhaopingongsi','审核') && (detail.sfsh=='待审核'||!detail.sfsh)" @click="onSH" type="warning">审核</el-button>
+					<el-button :style='{"border":"1px solid #C98777","cursor":"pointer","padding":"0 10px","margin":"0 5px 0 0","outline":"none","color":"#C98777","borderRadius":"0px","background":"none","width":"auto","lineHeight":"34px","fontSize":"14px","height":"34px"}' @click="goToReview">查看评价</el-button>
 				</div>
 			</div>
 		</div>
@@ -192,6 +193,13 @@
 		// 返回按钮
 		backClick(){
 			history.back()
+		},
+		// 跳转到评价页面
+		goToReview() {
+			let query = {
+				id: this.detail.id
+			}
+			this.$router.push({path: '/index/qiyepingjiaDetail', query: query});
 		},
 		// 下载
 		download(file){

@@ -29,8 +29,9 @@
 					<el-input v-model="ruleForm.typename"
 						placeholder="分类名称" readonly></el-input>
 				</el-form-item>
+				<!-- 发布人自动填充当前登录管理员username，不可编辑 -->
 				<el-form-item :style='{"border":"0px solid #eee","padding":"0","margin":"0 0 16px 0","color":"inherit","borderRadius":"0px","background":"none","width":"100%","fontSize":"inherit"}' class="input" v-if="type!='info'"  label="发布人" prop="name">
-					<el-input v-model="ruleForm.name" placeholder="发布人" clearable  :readonly="ro.name"></el-input>
+					<el-input v-model="ruleForm.name" placeholder="发布人" disabled></el-input>
 				</el-form-item>
 				<el-form-item :style='{"border":"0px solid #eee","padding":"0","margin":"0 0 16px 0","color":"inherit","borderRadius":"0px","background":"none","width":"100%","fontSize":"inherit"}' v-else class="input" label="发布人" prop="name">
 					<el-input v-model="ruleForm.name" placeholder="发布人" readonly></el-input>
@@ -252,6 +253,12 @@ export default {
 			if (id) {
 				this.id = id;
 				this.type = type;
+			} else {
+				// 新增时自动填充当前登录管理员username
+				const username = this.$storage.get('username');
+				if (username) {
+					this.ruleForm.name = username;
+				}
 			}
 			if(this.type=='info'||this.type=='else'){
 				this.info(id);

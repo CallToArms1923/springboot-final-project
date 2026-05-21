@@ -28,6 +28,8 @@ import jianzhifenleiAdd from '../pages/jianzhifenlei/add'
 import zhaopinxinxiList from '../pages/zhaopinxinxi/list'
 import zhaopinxinxiDetail from '../pages/zhaopinxinxi/detail'
 import zhaopinxinxiAdd from '../pages/zhaopinxinxi/add'
+import qiyepingjiaList from '../pages/qiyepingjia/list'
+import qiyepingjiaDetail from '../pages/qiyepingjia/detail'
 import toudixinxiList from '../pages/toudixinxi/list'
 import toudixinxiDetail from '../pages/toudixinxi/detail'
 import toudixinxiAdd from '../pages/toudixinxi/add'
@@ -158,6 +160,14 @@ export default new VueRouter({
 				{
 					path: 'zhaopinxinxiAdd',
 					component: zhaopinxinxiAdd
+				},
+				{
+					path: 'qiyepingjia',
+					component: qiyepingjiaList
+				},
+				{
+					path: 'qiyepingjiaDetail',
+					component: qiyepingjiaDetail
 				},
 				{
 					path: 'toudixinxi',

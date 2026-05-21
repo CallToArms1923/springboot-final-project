@@ -29,3 +29,43 @@ build/
 
 ### VS Code ###
 .vscode/
+# 前端绝对不要上传的文件
+node_modules/
+dist/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+.cache/
+node_modules/.cache/
+
+# 后端绝对不要上传的文件
+target/
+.idea/
+*.iml
+out/
+logs/
+
+# 系统垃圾文件
+.DS_Store
+Thumbs.db
+*.log
+*.local
+# 前端依赖/打包文件（必须加admin前缀，适配你的项目结构）
+admin/node_modules/
+admin/dist/
+admin/package-lock.json
+admin/.cache/
+admin/node_modules/.cache/
+
+# 后端编译/缓存文件
+target/
+.idea/
+*.iml
+out/
+logs/
+
+# 系统垃圾文件
+.DS_Store
+Thumbs.db
+*.log
+*.local

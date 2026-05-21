@@ -163,6 +163,11 @@ public class NewsController {
     @RequestMapping("/save")
     public R save(@RequestBody NewsEntity news, HttpServletRequest request){
     	//ValidatorUtils.validateEntity(news);
+    	// 自动填充当前登录管理员的username作为发布人
+    	Object adminUsername = request.getSession().getAttribute("username");
+    	if (adminUsername != null) {
+    		news.setName(adminUsername.toString());
+    	}
         newsService.insert(news);
         return R.ok();
     }

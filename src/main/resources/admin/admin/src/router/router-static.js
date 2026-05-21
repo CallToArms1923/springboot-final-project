@@ -17,6 +17,7 @@ import center from '@/views/center'
     import toudixinxi from '@/views/modules/toudixinxi/list'
     import forum from '@/views/modules/forum/list'
     import zhaopinxinxi from '@/views/modules/zhaopinxinxi/list'
+    import qiyepingjia from '@/views/modules/qiyepingjia/list'
     import systemintro from '@/views/modules/systemintro/list'
     import zhaopingongsi from '@/views/modules/zhaopingongsi/list'
     import messages from '@/views/modules/messages/list'
@@ -83,6 +84,11 @@ export const routes = [{
 	path: '/zhaopinxinxi',
         name: '招聘信息',
         component: zhaopinxinxi
+      }
+      ,{
+	path: '/qiyepingjia',
+        name: '评分评价管理',
+        component: qiyepingjia
       }
       ,{
 	path: '/systemintro',

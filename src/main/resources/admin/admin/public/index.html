@@ -14,6 +14,13 @@
 		<!-- 使用CDN引入jQuery用于验证码 -->
 		<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<title>管理端-智聘兼职发布平台</title>
+		<style>
+		/* 导航栏宽度覆盖 */
+		#app .el-menu--horizontal>.el-submenu .el-submenu__title{min-width:100px!important;padding:0 20px!important}
+		/* 排序按钮和分页颜色 */
+		#app .el-radio-button__orig-radio:checked+.el-radio-button__inner{background-color:rgb(72,121,141)!important;border-color:rgb(72,121,141)!important;box-shadow:-1px 0 0 0 rgb(72,121,141)!important;color:#fff!important}
+		#app .el-pagination.is-background .el-pager li.active{background-color:rgb(72,121,141)!important;color:#fff!important}
+		</style>
 	</head>
 	<body>
 		<noscript>

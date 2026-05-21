@@ -660,7 +660,7 @@ import AddOrUpdate from "./add-or-update";
 			}
 	
 	.center-form-pv .actions .btn18 {
-				border: 1px solid #484443;
+				border: 1px solid rgb(116, 118, 134);
 				cursor: pointer;
 				padding: 16px 15px;
 				margin: 4px 4px 5px;
@@ -670,13 +670,24 @@ import AddOrUpdate from "./add-or-update";
 				border-radius: 3px;
 				box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
 				text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.4);
-				background: linear-gradient(to bottom, #686463 0%,#484443 100%);
+				background: rgb(116, 118, 134);
 				width: auto;
 				height: auto;
 			}
 	
 	.center-form-pv .actions .btn18:hover {
 				transform: scale(1.09) rotate(3deg);
+			}
+
+	.center-form-pv .actions /deep/ .btn18.el-button--success {
+				border-color: rgb(116, 118, 134) !important;
+				background: rgb(116, 118, 134) !important;
+				color: #fff !important;
+			}
+
+	.center-form-pv .actions /deep/ .btn18.el-button--success:hover {
+				border-color: rgb(116, 118, 134) !important;
+				background: rgb(116, 118, 134) !important;
 			}
 	
 	// table

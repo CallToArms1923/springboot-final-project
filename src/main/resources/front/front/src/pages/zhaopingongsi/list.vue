@@ -1,4 +1,4 @@
-﻿<template>
+<template>
 <div>
 	<div :style='{"padding":"20px","margin":"0px auto","borderColor":"#d3d3d3","borderRadius":"0px","background":"#fff","borderWidth":"0 1px","width":"980px","borderStyle":"solid"}' class="breadcrumb-preview">
 		<el-breadcrumb :separator="'='" :style='{"fontSize":"14px","lineHeight":"1","justifyContent":"flex-start","display":"flex"}'>
@@ -45,11 +45,17 @@
 	<div class="list" :style='{"width":"calc(100% - 0px)","padding":"20px 0 0 0","margin":"0","background":"none","flex":"1","order":"6"}'>
 		<!-- 样式一 -->
 		<div class="list1 index-pv1" :style='{"padding":"0 0 0 20px","overflow":"hidden","color":"#666","background":"none","width":"100%","fontSize":"14px","height":"auto"}'>
-			<div :style='{"border":"0px solid #ddd","cursor":"pointer","padding":"0 0 10px","margin":"0 43px 20px 0","overflow":"hidden","background":"#fff","display":"inline-block","width":"140px","position":"relative","height":"auto"}' v-for="(item, index) in dataList" :key="index" @click.stop="toDetail(item)" class="list-item animation-box">
-				<div v-if="item.price" :style='{"width":"100%","padding":"0 10px","lineHeight":"24px","fontSize":"inherit","color":"#c00","textAlign":"right"}' class="price"><span :style='{"fontSize":"12px"}'>￥</span>{{item.price}}</div>
-				<div :style='{"width":"100%","padding":"0 10px","textAlign":"right","display":"none"}'>
-				  <span class="icon iconfont icon-shijian21" :style='{"margin":"0 2px 0 0","lineHeight":"24px","fontSize":"inherit","color":"inherit"}'></span>
-				  <span class="text" :style='{"color":"#999","lineHeight":"32px","fontSize":"inherit"}'>{{item.addtime}}</span>
+			<div :style='{"border":"0px solid #ddd","cursor":"pointer","padding":"0 0 10px","margin":"0 43px 20px 0","overflow":"hidden","background":"#fff","display":"inline-block","width":"140px","position":"relative","height":"auto"}' v-for="(item, index) in dataList" :key="index" class="list-item animation-box">
+				<div @click.stop="toDetail(item)">
+					<div v-if="item.price" :style='{"width":"100%","padding":"0 10px","lineHeight":"24px","fontSize":"inherit","color":"#c00","textAlign":"right"}' class="price"><span :style='{"fontSize":"12px"}'>￥</span>{{item.price}}</div>
+					<div :style='{"width":"100%","padding":"0 10px","textAlign":"right","display":"none"}'>
+					  <span class="icon iconfont icon-shijian21" :style='{"margin":"0 2px 0 0","lineHeight":"24px","fontSize":"inherit","color":"inherit"}'></span>
+					  <span class="text" :style='{"color":"#999","lineHeight":"32px","fontSize":"inherit"}'>{{item.addtime}}</span>
+					</div>
+				</div>
+				<div :style='{"padding":"5px 10px","textAlign":"center"}'>
+					<div :style='{"fontSize":"13px","fontWeight":"500","color":"#333","marginBottom":"8px","overflow":"hidden","textOverflow":"ellipsis","whiteSpace":"nowrap"}'>{{item.qiyemingcheng}}</div>
+					<el-button size="mini" :style='{"padding":"2px 8px","fontSize":"12px","height":"24px","lineHeight":"20px","color":"#C98777","borderColor":"#C98777","background":"#fff"}' @click.stop="goToReview(item)">查看评价</el-button>
 				</div>
 			</div>
 		</div>
@@ -199,6 +205,12 @@
 		  }
         this.$router.push({path: '/index/zhaopingongsiDetail', query: params});
       },
+	  goToReview(item) {
+		  let query = {
+			  id: item.id
+		  }
+		  this.$router.push({path: '/index/qiyepingjiaDetail', query: query});
+	  },
 	btnAuth(tableName,key){
 		if(this.centerType){
 			return this.isBackAuth(tableName,key)

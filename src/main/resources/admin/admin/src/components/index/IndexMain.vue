@@ -18,7 +18,7 @@
 				<index-aside :style='{"width":"100%","borderColor":"#efefef","borderStyle":"solid","background":"#304156","borderWidth":"0 0 1px 0","height":"auto"}'></index-aside>
 			  </template>
 			  <template v-if="2 == 2">
-				<index-aside :style='{"borderColor":"#efefef","margin":"0 0 0","background":"#fff","borderWidth":"0 0 1px 0","display":"flex","width":"100%","borderStyle":"solid","height":"auto"}'></index-aside>
+				<index-aside :style='{"borderColor":"#efefef","margin":"0 0 0","background":"none","borderWidth":"0 0 1px 0","display":"flex","width":"100%","borderStyle":"solid","height":"auto"}'></index-aside>
 			  </template>
 			</template>
 			
