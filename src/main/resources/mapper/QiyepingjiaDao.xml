@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dao.QiyepingjiaDao">
+
+	<resultMap type="com.entity.QiyepingjiaEntity" id="qiyepingjiaMap">
+		<result property="id" column="id"/>
+		<result property="qiyezhanghao" column="qiyezhanghao"/>
+		<result property="qiyemingcheng" column="qiyemingcheng"/>
+		<result property="xuehao" column="xuehao"/>
+		<result property="xingming" column="xingming"/>
+		<result property="pingfen" column="pingfen"/>
+		<result property="pingjianeirong" column="pingjianeirong"/>
+		<result property="addtime" column="addtime"/>
+	</resultMap>
+
+	<select id="selectListVO" resultType="com.entity.vo.QiyepingjiaVO">
+		SELECT * FROM qiyepingjia qiyepingjia
+		<where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+
+	<select id="selectVO" resultType="com.entity.vo.QiyepingjiaVO">
+		SELECT qiyepingjia.* FROM qiyepingjia qiyepingjia
+		<where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+
+	<select id="selectListView" resultType="com.entity.view.QiyepingjiaView">
+		SELECT qiyepingjia.* FROM qiyepingjia qiyepingjia
+		<where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+
+	<select id="selectView" resultType="com.entity.view.QiyepingjiaView">
+		SELECT * FROM qiyepingjia qiyepingjia
+		<where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+
+	<select id="selectCompanyStats" resultType="map">
+		SELECT
+			z.qiyezhanghao,
+			z.qiyemingcheng,
+			COUNT(q.id) AS pingjiarenshu,
+			ROUND(IFNULL(AVG(q.pingfen), 0), 1) AS pingjunfen
+		FROM zhaopingongsi z
+		LEFT JOIN qiyepingjia q ON z.qiyezhanghao = q.qiyezhanghao
+		<where>
+			1=1
+			<if test="params.qiyezhanghao != null and params.qiyezhanghao != ''">
+				AND z.qiyezhanghao LIKE CONCAT('%', #{params.qiyezhanghao}, '%')
+			</if>
+			<if test="params.qiyemingcheng != null and params.qiyemingcheng != ''">
+				AND z.qiyemingcheng LIKE CONCAT('%', #{params.qiyemingcheng}, '%')
+			</if>
+		</where>
+		GROUP BY z.qiyezhanghao, z.qiyemingcheng
+		<choose>
+			<when test="params.sort == 'pingjiarenshu' and params.order == 'asc'">
+				ORDER BY pingjiarenshu ASC, pingjunfen DESC
+			</when>
+			<when test="params.sort == 'pingjiarenshu' and params.order == 'desc'">
+				ORDER BY pingjiarenshu DESC, pingjunfen DESC
+			</when>
+			<otherwise>
+				ORDER BY pingjiarenshu DESC, pingjunfen DESC
+			</otherwise>
+		</choose>
+	</select>
+</mapper>

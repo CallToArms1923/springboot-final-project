@@ -1,0 +1,44 @@
+package com.entity.vo;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+/**
+ * 企业评分评价
+ */
+public class QiyepingjiaVO implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	private Long id;
+	private String qiyezhanghao;
+	private String qiyemingcheng;
+	private String xuehao;
+	private String xingming;
+	private Integer pingfen;
+	private String pingjianeirong;
+
+	@JsonFormat(locale = "zh", timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+	@DateTimeFormat
+	private Date addtime;
+
+	public Long getId() { return id; }
+	public void setId(Long id) { this.id = id; }
+	public String getQiyezhanghao() { return qiyezhanghao; }
+	public void setQiyezhanghao(String qiyezhanghao) { this.qiyezhanghao = qiyezhanghao; }
+	public String getQiyemingcheng() { return qiyemingcheng; }
+	public void setQiyemingcheng(String qiyemingcheng) { this.qiyemingcheng = qiyemingcheng; }
+	public String getXuehao() { return xuehao; }
+	public void setXuehao(String xuehao) { this.xuehao = xuehao; }
+	public String getXingming() { return xingming; }
+	public void setXingming(String xingming) { this.xingming = xingming; }
+	public Integer getPingfen() { return pingfen; }
+	public void setPingfen(Integer pingfen) { this.pingfen = pingfen; }
+	public String getPingjianeirong() { return pingjianeirong; }
+	public void setPingjianeirong(String pingjianeirong) { this.pingjianeirong = pingjianeirong; }
+	public Date getAddtime() { return addtime; }
+	public void setAddtime(Date addtime) { this.addtime = addtime; }
+}
