@@ -94,14 +94,14 @@
 							{{scope.row.storeupnum}}
 						</template>
 					</el-table-column>
-					<!-- picture -->
+					<!-- headportrait -->
 					<!-- $column.hiden -->
 					<!-- 无 -->
-					<el-table-column :resizable='true' :sortable='true' prop="picture" width="200" label="图片">
+					<el-table-column :resizable='true' :sortable='true' prop="headportrait" width="200" label="图片">
 						<template slot-scope="scope">
-							<div v-if="scope.row.picture">
-								<img v-if="scope.row.picture.substring(0,4)=='http'" :src="scope.row.picture.split(',')[0]" width="100" height="100" style="object-fit: cover">
-								<img v-else :src="$base.url+scope.row.picture.split(',')[0]" width="100" height="100" style="object-fit: cover">
+							<div v-if="scope.row.headportrait">
+								<img v-if="scope.row.headportrait.substring(0,4)=='http'" :src="scope.row.headportrait.split(',')[0]" width="100" height="100" style="object-fit: cover">
+								<img v-else :src="$base.url+scope.row.headportrait.split(',')[0]" width="100" height="100" style="object-fit: cover">
 							</div>
 							<div v-else>无图片</div>
 						</template>

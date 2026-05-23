@@ -83,7 +83,7 @@
 		  <div :style='{"padding":"0 0 0 34px","borderColor":"#C98777","color":"#222","borderRadius":"0px","textAlign":"left","background":"url(http://codegen.caihongy.cn/20240124/c18108dd98c34cdbab5fc0b1ed2dd781.png) no-repeat 10px center","borderWidth":"0 0 2px","width":"100%","lineHeight":"34px","fontSize":"20px","borderStyle":"solid","fontWeight":"500"}'>热门推荐</div>
 		  <div :style='{"padding":"0","margin":"10px 0 0","flexWrap":"wrap","background":"none","display":"flex","width":"100%","justifyContent":"space-between","height":"auto"}'>
 		    <div v-for="item in hotList" :key="item.id" :style='{"cursor":"pointer","padding":"10px","margin":"0 44px 20px 0","borderRadius":"0px","background":"#fff","width":"140px","height":"auto"}' @click="toNewsDetail(item)">
-		      <img :style='{"width":"140px","margin":"0 0 5px","objectFit":"cover","borderRadius":"0","display":"block","height":"140px"}' :src="baseUrl + item.picture" alt="">
+		      <img :style='{"width":"140px","margin":"0 0 5px","objectFit":"cover","borderRadius":"0","display":"block","height":"140px"}' :src="baseUrl + item.headportrait" alt="">
 		      <div :style='{"padding":"0 0px","borderColor":"#eee","overflow":"hidden","whiteSpace":"nowrap","color":"#333","textAlign":"left","borderWidth":"0 00px","width":"100%","lineHeight":"21px","fontSize":"14px","textOverflow":"ellipsis","borderStyle":"solid"}'>{{ item.title }}</div>
 		      <div :style='{"padding":"0 10px","lineHeight":"24px","fontSize":"14px","color":"#999","textAlign":"right","display":"block"}'>{{item.addtime}}</div>
 		    </div>

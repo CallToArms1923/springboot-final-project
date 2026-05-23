@@ -190,7 +190,7 @@
 								<span class="icon iconfont icon-chakan14" :style='{"margin":"0 2px","fontSize":"inherit","color":"inherit","display":"inline-block","height":"auto"}'></span>
 								查看
 							</el-button>
-							<el-button class="view" v-if="isAuth('mianshitongzhi','录取')" type="success" size="mini" @click="openLuquDialog(scope.row)" style="background: linear-gradient(to bottom, #f0c040 0%,#d4a017 100%); border-color: #d4a017; color: #fff;">
+							<el-button class="view luqu-btn" v-if="isAuth('mianshitongzhi','录取')" type="success" size="mini" @click="openLuquDialog(scope.row)">
 								<span class="icon iconfont icon-xihuan" :style='{"margin":"0 2px","fontSize":"inherit","color":"inherit","display":"inline-block","height":"auto"}'></span>
 								录取
 							</el-button>
@@ -814,7 +814,15 @@ import luquxinxiCrossAddOrUpdate from "../luquxinxi/add-or-update";
 };
 </script>
 <style lang="scss" scoped>
-	
+	.luqu-btn {
+		background: rgb(204, 191, 211) !important;
+		border-color: rgb(204, 191, 211) !important;
+		color: #fff !important;
+	}
+	.luqu-btn:hover {
+		background: rgb(184, 171, 191) !important;
+		border-color: rgb(184, 171, 191) !important;
+	}
 	.center-form-pv {
 	  .el-date-editor.el-input {
 	    width: auto;
@@ -1073,6 +1081,28 @@ import luquxinxiCrossAddOrUpdate from "../luquxinxi/add-or-update";
 	
 	.el-table /deep/ .el-table__body-wrapper tbody tr td .view:hover {
 				transform: scale(1.09) rotate(3deg);
+			}
+	
+	.el-table /deep/ .el-table__body-wrapper tbody tr td .luqu-btn {
+				border: 1px solid rgb(154, 150, 142) !important;
+				cursor: pointer;
+				padding: 0 10px;
+				margin: 5px 5px 5px 0;
+				color: #fff !important;
+				font-size: 13px;
+				transition: all 0.3s;
+				border-radius: 3px;
+				box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+				text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+				background: rgb(154, 150, 142) !important;
+				width: auto;
+				min-width: 40px;
+				height: 40px;
+			}
+
+	.el-table /deep/ .el-table__body-wrapper tbody tr td .luqu-btn:hover {
+				transform: scale(1.09) rotate(3deg);
+				background: rgb(134, 130, 122) !important;
 			}
 	
 	.el-table /deep/ .el-table__body-wrapper tbody tr td .add {

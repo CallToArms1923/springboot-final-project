@@ -30,12 +30,7 @@
             <span class="icon iconfont icon-shanchu7" :style='{"margin":"0 2px","fontSize":"inherit","color":"inherit","display":"inline-block"}'></span>
             删除
           </el-button>
-          <download-excel :data="statsList" :fields="jsonFields" name="企业评分统计.xls">
-            <el-button class="add" type="success" @click.native="getStatsList()">
-              <span class="icon iconfont icon-a-fenxiang2" :style='{"margin":"0 2px","fontSize":"inherit","color":"inherit","display":"inline-block"}'></span>
-              导出评分统计
-            </el-button>
-          </download-excel>
+
           <el-button class="stat-btn" v-if="isAuth('qiyepingjia','查看')" type="success" @click="chartDialog()">
             <span class="icon iconfont icon-a-fenxiang2" :style='{"margin":"0 2px","fontSize":"inherit","color":"inherit","display":"inline-block"}'></span>
             企业平均分统计
@@ -96,8 +91,9 @@
       <el-dialog
         title="企业平均分统计"
         :visible.sync="chartVisiable"
-        width="1200px">
-        <div id="pingfenChart" style="width:100%;height:700px;"></div>
+        width="1400px"
+        top="5vh">
+        <div id="pingfenChart" style="width:100%;height:800px;"></div>
         <span slot="footer" class="dialog-footer">
           <el-button @click="chartVisiable = false">关闭</el-button>
         </span>
@@ -130,12 +126,7 @@ export default {
       sortOrder: 'desc',
       rateColors: ['#F7BA2A', '#F7BA2A', '#F7BA2A'],
       chartVisiable: false,
-      jsonFields: {
-        '企业账号': 'qiyezhanghao',
-        '企业名称': 'qiyemingcheng',
-        '评价人数': 'pingjiarenshu',
-        '综合评分': 'xianshipingfen'
-      }
+
     }
   },
   created() {
@@ -146,7 +137,6 @@ export default {
     search() {
       this.pageIndex = 1
       this.getDataList()
-      this.getStatsList()
     },
     getDataList() {
       this.dataListLoading = true
@@ -184,6 +174,8 @@ export default {
       this.pageIndex = 1
       this.getDataList()
     },
+
+    // 获取企业评分统计列表
     getStatsList() {
       this.$http({
         url: 'qiyepingjia/stats',
@@ -198,6 +190,7 @@ export default {
         }
       })
     },
+
     // 企业平均分统计图表
     chartDialog() {
       this.chartVisiable = true
@@ -214,7 +207,9 @@ export default {
             const statsData = data.data
             // 筛选有评分的企业（评价人数>=5）
             const validData = statsData.filter(item => item.pingjiarenshu >= 5)
-            // 取前20个企业展示
+            // 按平均分升序排序，让低分企业也能显示
+            validData.sort((a, b) => parseFloat(a.pingjunfen) - parseFloat(b.pingjunfen))
+            // 取前20个企业展示（现在包含低分企业）
             const displayData = validData.slice(0, 20)
             
             const qiyeNames = displayData.map(item => item.qiyemingcheng)
@@ -224,7 +219,7 @@ export default {
             const chart = echarts.init(document.getElementById('pingfenChart'), 'fresh-cut')
             const option = {
               title: {
-                text: '企业平均分统计（评价人数≥5人）',
+                text: '企业平均分统计（评价人数≥5人，按评分升序）',
                 left: 'center'
               },
               tooltip: {
@@ -251,8 +246,8 @@ export default {
               grid: {
                 left: '3%',
                 right: '4%',
-                bottom: '15%',
-                top: '15%',
+                bottom: '35%',
+                top: '10%',
                 containLabel: true
               },
               xAxis: {
@@ -260,12 +255,12 @@ export default {
                 data: qiyeNames,
                 axisLabel: {
                   interval: 0,
-                  rotate: 45,
-                  fontSize: 9,
+                  rotate: 70,
+                  fontSize: 7,
                   formatter: function(value) {
                     // 企业名称过长时截断显示
-                    if (value.length > 12) {
-                      return value.substring(0, 12) + '...'
+                    if (value.length > 8) {
+                      return value.substring(0, 8) + '...'
                     }
                     return value
                   }
@@ -360,7 +355,6 @@ export default {
               duration: 1500,
               onClose: () => {
                 this.getDataList()
-                this.getStatsList()
               }
             })
           } else {
@@ -459,37 +453,7 @@ export default {
 				color: #fff !important;
 			}
 
-	.center-form-pv .actions .add {
-				border: 1px solid #B9AFCB;
-				cursor: pointer;
-				padding: 16px 15px;
-				margin: 4px 4px 5px;
-				color: inherit;
-				font-size: inherit;
-				transition: all 0.3s;
-				border-radius: 3px;
-				box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
-				text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
-				background: linear-gradient(to bottom, #C9B9DB 0%,#B9AFCB 100%),#C9B9DB;
-				width: auto;
-				min-width: 70px;
-				height: auto;
-			}
 
-	.center-form-pv .actions .add:hover {
-				transform: scale(1.09) rotate(3deg);
-			}
-
-	.center-form-pv .actions /deep/ .add.el-button--success {
-				border-color: #B9AFCB !important;
-				background: linear-gradient(to bottom, #C9B9DB 0%,#B9AFCB 100%) !important;
-				color: #fff !important;
-			}
-
-	.center-form-pv .actions /deep/ .add.el-button--success:hover {
-				border-color: #B9AFCB !important;
-				background: linear-gradient(to bottom, #C9B9DB 0%,#B9AFCB 100%) !important;
-			}
 
 	.center-form-pv .actions .stat-btn {
 				border: 1px solid rgb(155, 151, 146);

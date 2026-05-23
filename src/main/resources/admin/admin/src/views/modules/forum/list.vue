@@ -702,7 +702,7 @@ import AddOrUpdate from "./add-or-update";
 			}
 	
 	.el-table /deep/ .el-table__body-wrapper tbody tr td .view-comments {
-				border: 1px solid #C097A7;
+				border: 1px solid rgb(166, 170, 178) !important;
 				cursor: pointer;
 				padding: 0 10px;
 				margin: 5px 5px 5px 0;
@@ -712,7 +712,7 @@ import AddOrUpdate from "./add-or-update";
 				border-radius: 3px;
 				box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
 				text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
-				background: linear-gradient(to bottom, #D4B0BF 0%,#C097A7 100%);
+				background: rgb(166, 170, 178) !important;
 				width: auto;
 				min-width: 40px;
 				height: 40px;
@@ -720,6 +720,17 @@ import AddOrUpdate from "./add-or-update";
 	
 	.el-table /deep/ .el-table__body-wrapper tbody tr td .view-comments:hover {
 				transform: scale(1.09) rotate(3deg);
+			}
+	
+	.el-table /deep/ .el-table__body-wrapper tbody tr td /deep/ .view-comments.el-button--success {
+				border-color: rgb(166, 170, 178) !important;
+				background: rgb(166, 170, 178) !important;
+				color: #fff !important;
+			}
+	
+	.el-table /deep/ .el-table__body-wrapper tbody tr td /deep/ .view-comments.el-button--success:hover {
+				border-color: rgb(166, 170, 178) !important;
+				background: rgb(166, 170, 178) !important;
 			}
 	
 	.el-table /deep/ .el-table__body-wrapper tbody tr td .add {

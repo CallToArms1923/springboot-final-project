@@ -54,7 +54,7 @@
 		  <div :style='{"padding":"0 0 0 34px","borderColor":"#C98777","color":"#4a576a","borderRadius":"0px","textAlign":"left","background":"url(http://codegen.caihongy.cn/20240124/c18108dd98c34cdbab5fc0b1ed2dd781.png) no-repeat 10px center","borderWidth":"0 0 2px","width":"100%","lineHeight":"34px","fontSize":"20px","borderStyle":"solid"}'>热门文章</div>
 		  <div :style='{"padding":"0 0 40px 0","margin":"10px 0 0","flexWrap":"wrap","background":"#fff","display":"flex","width":"100%","justifyContent":"space-between","height":"auto"}'>
 		    <div v-for="item in hotList" :key="item.id" :style='{"cursor":"pointer","width":"49%","padding":"0","background":"#fff","height":"auto"}' @click="toDetail(item.id)">
-		      <img :style='{"width":"100%","objectFit":"cover","display":"none","clipPath":"polygon(0% 0%, 95% 0, 100% 50%, 95% 100%, 0% 100%)","height":"120px"}' :src="baseUrl + item.picture" alt="">
+		      <img :style='{"width":"100%","objectFit":"cover","display":"none","clipPath":"polygon(0% 0%, 95% 0, 100% 50%, 95% 100%, 0% 100%)","height":"120px"}' :src="baseUrl + item.headportrait" alt="">
 		      <div :style='{"padding":"4px 10px 0","borderColor":"#eee","overflow":"hidden","whiteSpace":"nowrap","color":"#666","borderWidth":"0 0 1px","width":"100%","lineHeight":"50px","fontSize":"14px","textOverflow":"ellipsis","borderStyle":"solid","height":"auto"}'>{{ item.title }}</div>
 		      <div :style='{"padding":"0 5px","lineHeight":"24px","fontSize":"14px","color":"#999","textAlign":"right","display":"none"}'>{{item.addtime}}</div>
 		    </div>
@@ -217,7 +217,7 @@
 				}else{
 					let data = {
 						name: this.detail.title,
-						picture: this.detail.picture,
+						picture: this.detail.headportrait,
 						refid: this.detail.id,
 						type: 21,
 						tablename: 'news',
@@ -246,7 +246,7 @@
 				}else{
 					let data = {
 						name: this.detail.title,
-						picture: this.detail.picture,
+						picture: this.detail.headportrait,
 						refid: this.detail.id,
 						type: 1,
 						tablename: 'news',
